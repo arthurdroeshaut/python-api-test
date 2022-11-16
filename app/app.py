@@ -1,25 +1,14 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel
-
-class Login(BaseModel):
-    username: str
-    password: str
 
 app = FastAPI()
-origins = [""]
-app.add_middleware(CORSMiddleware, allow_origins=origins,
-                   allow_credentials=True, allow_methods=[""], allow_headers=["*"])
 
-@app.get("/get")
-def root():
-    return {"message": "endpoint 1"}
+my_song = {'artist': 'Against The Current', 'title': 'Weapon'}
+neighbour_song = {'artist': 'The Corrs', 'title': 'Breathless'}
 
-@app.get("/")
-def endpoint1():
-    return {"message": "endpoint 2"}
+@app.get("/song/me")
+async def get_my_song():
+    return my_song
 
-@app.post("/test")
-def postLogin(credentials: Login):
-    return credentials
+@app.get("/song/neighbour")
+async def get_neighbour_song():
+    return neighbour_song
