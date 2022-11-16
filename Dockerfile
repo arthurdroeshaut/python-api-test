@@ -1,7 +1,18 @@
-FROM python:3.10.0-alpine
-WORKDIR /code
-EXPOSE 8000
-COPY ./requirements.txt /code/requirements.txt
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
-COPY ./app /code/app
-CMD ["uvicorn", "app.randomizer:app", "--host", "0.0.0.0", "--port", "8000"]
+FROM ubuntu:20.04
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y python3-pip && \
+    apt-get clean
+
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
+RUN useradd -ms /bin/bash user
+
+USER user
+WORKDIR /home/user
+
+RUN pip3 install --upgrade pip
+COPY ./requirements.txt Requirements/
+RUN pip3 install -r Requirements/requirements.txt
