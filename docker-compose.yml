@@ -1,6 +1,7 @@
 version: "3.9"
 services:
-  randomizer_service:
-  image: arthurdroeshaut/python-api-test
+ randomizer-service:
+  image: miverboven/python-api-test
   ports:
     - "8000:8000"
+
