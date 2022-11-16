@@ -16,4 +16,4 @@ WORKDIR /home/user
 RUN pip3 install --upgrade pip
 COPY ./requirements.txt Requirements/
 RUN pip3 install -r Requirements/requirements.txt
-CMD [ "uvicorn", "randomizer.py:app", "--host", "0.0.0.0", "--port", "8000"" ]
+CMD [ "uvicorn", "app.py:app", "--host", "0.0.0.0", "--port", "8000"" ]
