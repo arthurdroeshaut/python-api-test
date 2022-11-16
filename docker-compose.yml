@@ -1,6 +1,6 @@
 version: "3.9"
 services:
  voetballers_service:
-  image: Arthurdroeshaut/python-api-test
+  image: arthurdroeshaut/python-api-test
   ports:
     - "8000:8000"
