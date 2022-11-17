@@ -34,7 +34,7 @@ async def create_item(voetballer: voetbalspeler):
     voetballer[new_key] = speler
     return voetballer[new_key]
 
-@app.get("/voetballers")
+@app.get("/voetballer")
 async def get_item():
     return alle_voetballers
 
@@ -44,7 +44,7 @@ async def get_item():
 
 @app.get("/voetballer/Messi")
 async def get_item():
-    return voetballer_Ronaldo
+    return voetballer_Messi
 
 @app.put("/voetballer/{id}")
 async def get_item(id: int, voetballer: voetbalspeler):
