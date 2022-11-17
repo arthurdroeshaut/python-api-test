@@ -1,14 +1,23 @@
-from fastapi import FastAPI
 
+from fastapi import FastAPI, Query
+from random import randint
 app = FastAPI()
+all_animals = ["badger", "lion", "wolf", "porcupine", "cheetah", "giraffe", 
+"panda", "gorilla", "tiger", "koala", "jaguar", "elephant", "blue-and-yellow macaw", "hornbill", "rhinoceros", "kangaroo", "ostridge", "bison", "wallaby"]
+@app.get("/zoo")
+async def root(number: int = Query(default=5, gt=0, description='This parameter' 
+indicates how many animals should be returned by the API. The sex for each animal 
+will be determined randomly.')):
 
-my_song = {'artist': 'Against The Current', 'title': 'Weapon'}
-neighbour_song = {'artist': 'The Corrs', 'title': 'Breathless'}
 
-@app.get("/song/me")
-async def get_my_song():
-    return my_song
 
-@app.get("/song/neighbour")
-async def get_neighbour_song():
-    return neighbour_song
+    zoo_animals = []
+    for i in range(number):
+        if randint(0,1) == 0:
+            sex = "male"
+        else:
+            sex = "female"
+        new_animal = {'number': i+1, 'species': all_animals[randint(0, 
+len(all_animals)-1)], 'sex': sex}
+        zoo_animals.append(new_animal)
+    return {"animals": zoo_animals}
