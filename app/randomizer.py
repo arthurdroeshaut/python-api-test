@@ -1,27 +1,33 @@
+
 from fastapi import FastAPI
-from random import randint
-
+from pydantic import BaseModel, Field
 app = FastAPI()
-@app.get("/percentage")
-
-async def get_random_percentage():
-    return {'percentage': randint(0, 100)}
-
-@app.get("/percentage/{lower_limit}/{upper_limit}")
-async def get_random_percentage(lower_limit: int, upper_limit: int):
-    if(lower_limit >= upper_limit):
-        return {'error': 'The upper limit must be greater than the lower limit!', 
-'lower limit': lower_limit, 'upper limit': upper_limit}
-    return {'percentage': randint(lower_limit, upper_limit)}
-
-@app.get("/percentage/{lower_limit}/{upper_limit}/{amount}")
-async def get_random_percentage(lower_limit: int, upper_limit: int, amount: int):
-    if(lower_limit >= upper_limit):
-        return {'error': 'The upper limit must be greater than the lower limit!', 
-'lower limit': lower_limit, 'upper limit': upper_limit}
-    if (amount <= 0):
-        return {'error': 'The amount must be greater than 0!', 'amount': amount}
-    random_numbers = []
-    for counter in range(amount):
-        random_numbers.append(randint(lower_limit, upper_limit))
-    return {'percentages': random_numbers}
+class BusinessCard(BaseModel):
+    first_name: str
+    last_name: str
+    street: str
+    number: str = Field(max_length=10)
+    addition: str | None = None
+    zip: int
+    city: str
+business_card_brent = {
+    "first_name": "Brent",
+    "last_name": "Pulmans",
+    "street": "Kleinhoefstraat",
+    "number": "4",
+    "zip": 2440,
+    "city": "Geel"
+}
+cards = {0: business_card_brent}
+@app.post("/cards")
+async def create_item(card: BusinessCard):
+    new_key = max(cards, key=cards.get)+1
+    cards[new_key] = card
+    return cards[new_key]
+@app.get("/cards")
+async def get_item():
+    return cards
+@app.put("/cards/{id}")
+async def get_item(id: int, card: BusinessCard):
+    cards[id] = card
+    return cards[id]
