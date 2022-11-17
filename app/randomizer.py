@@ -11,7 +11,7 @@ class voetbalspeler(BaseModel):
     leeftijd: int
 
 
-alle_voetballers = [ "Cristiano" "Messi" "Mbappe" "Hazard" "De Bruyne" "Neymar" "Reus"]
+alle_voetballers = [ "Cristiano", "Messi", "Mbappe", "Hazard", "De Bruyne", "Neymar", "Reus"]
 
 #geeft meer info weer over ronaldo om deze later op te vragen
 voetballer_Ronaldo = {
