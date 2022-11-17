@@ -27,7 +27,6 @@ voetballer_Messi = {
     "positie": "aanvaller",
     "leeftijd": 35,
 }
-spelers= {alle_voetballers}
 speler = {1: voetballer_Ronaldo}
 speler = {2: voetballer_Messi}
 @app.post("/voetballer/Ronaldo")
