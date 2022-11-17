@@ -1,0 +1,50 @@
+[
+    {
+        "ID": 1, 
+        "voornaam": "Cristiano", 
+        "achternaam": "Ronaldo", 
+        "ploeg": "Manchester United", 
+        "nationaliteit": "Portugees", 
+        "leeftijd": "37",
+        "positie": "aanvaller"
+    },
+    {
+        "ID": 2, 
+        "voornaam": "Lionel", 
+        "achternaam": "Messi", 
+        "ploeg": "Paris Saint German", 
+        "nationaliteit": "Argentijns", 
+        "leeftijd": "35",
+        "positie": "aanvaller/middenvelder"
+    },
+    {
+        "ID": 3, 
+        "voornaam": "Eden", 
+        "achternaam": "Hazard", 
+        "ploeg": "Real Madrid", 
+        "nationaliteit": "Belgisch", 
+        "leeftijd": "31",
+        "positie": "aanvaller"
+    },
+    {
+        "ID": 4, 
+        "voornaam": "Marco", 
+        "achternaam": "Reus", 
+        "ploeg": "Borrusia Dortmund", 
+        "nationaliteit": "Duits", 
+        "leeftijd": "31",
+        "positie": "middenvelder"
+    },
+    {
+        "ID": 5, 
+        "voornaam": "Zlatan", 
+        "achternaam": "Ibrahimovic", 
+        "ploeg": "AC Milan", 
+        "nationaliteit": "Zweeds", 
+        "leeftijd": "41",
+        "positie": "aanvaller"
+    }
+
+
+
+]
