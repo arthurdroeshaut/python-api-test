@@ -9,23 +9,43 @@ class voetbalspeler(BaseModel):
     positie: str
     leeftijd: int
 
+alle_voetballers = [ "Cristiano", "Messi", "Mbappe", "Hazard", "De Bruyne", "Neymar", "Reus"]
+    
+
 voetballer_Ronaldo = {
-    "id": 1,
     "voornaam": "Cristiano",
     "achternaam": "Ronaldo",
     "nationaliteit": "Portugees",
     "positie": "aanvaller",
     "leeftijd": 37,
 }
-speler = {0: voetballer_Ronaldo}
-@app.post("/voetballer")
+
+voetballer_Messi = {
+    "voornaam": "Lionel",
+    "achternaam": "Messi",
+    "nationaliteit": "Argentijns",
+    "positie": "aanvaller",
+    "leeftijd": 35,
+}
+speler = {1: voetballer_Ronaldo}
+@app.post("/voetballer/Ronaldo")
 async def create_item(voetballer: voetbalspeler):
     new_key = max(speler, key=voetballer.get)
     voetballer[new_key] = speler
     return voetballer[new_key]
-@app.get("/voetballer")
+
+@app.get("/voetballers")
 async def get_item():
-    return speler
+    return alle_voetballers
+
+@app.get("/voetballer/Ronaldo")
+async def get_item():
+    return voetballer_Ronaldo
+
+@app.get("/voetballer/Messi")
+async def get_item():
+    return voetballer_Ronaldo
+
 @app.put("/voetballer/{id}")
 async def get_item(id: int, voetballer: voetbalspeler):
     voetballer[id] = speler
