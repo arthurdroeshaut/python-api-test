@@ -1,23 +1,24 @@
 
-from fastapi import FastAPI, Query
+from fastapi import FastAPI
 from random import randint
 app = FastAPI()
-all_animals = ["badger", "lion", "wolf", "porcupine", "cheetah", "giraffe", 
-"panda", "gorilla", "tiger", "koala", "jaguar", "elephant", "blue-and-yellow macaw", "hornbill", "rhinoceros", "kangaroo", "ostridge", "bison", "wallaby"]
-@app.get("/zoo")
-async def root(number: int = Query(default=5, gt=0, description='This parameter' 
-indicates how many animals should be returned by the API. The sex for each animal 
-will be determined randomly.')):
-
-
-
-    zoo_animals = []
-    for i in range(number):
-        if randint(0,1) == 0:
-            sex = "male"
-        else:
-            sex = "female"
-        new_animal = {'number': i+1, 'species': all_animals[randint(0, 
-len(all_animals)-1)], 'sex': sex}
-        zoo_animals.append(new_animal)
-    return {"animals": zoo_animals}
+@app.get("/percentage")
+async def get_random_percentage():
+    return {'percentage': randint(0, 100)}
+@app.get("/percentage/{lower_limit}/{upper_limit}")
+async def get_random_percentage(lower_limit: int, upper_limit: int):
+    if(lower_limit >= upper_limit):
+        return {'error': 'The upper limit must be greater than the lower limit!', 
+'lower limit': lower_limit, 'upper limit': upper_limit}
+    return {'percentage': randint(lower_limit, upper_limit)}
+@app.get("/percentage/{lower_limit}/{upper_limit}/{amount}")
+async def get_random_percentage(lower_limit: int, upper_limit: int, amount: int):
+    if(lower_limit >= upper_limit):
+        return {'error': 'The upper limit must be greater than the lower limit!', 
+'lower limit': lower_limit, 'upper limit': upper_limit}
+    if (amount <= 0):
+        return {'error': 'The amount must be greater than 0!', 'amount': amount}
+    random_numbers = []
+    for counter in range(amount):
+        random_numbers.append(randint(lower_limit, upper_limit))
+    return {'percentages': random_numbers}
