@@ -23,7 +23,7 @@ class StarWars(BaseModel):
 
 
 #ik wil eerst een random star wars karakter opvragen
-@app.get("/StarWars")
+@app.get("/StarWars/Characters")
 async def get_item(Star_Wars_Characters):
     return random.choice(Star_Wars_Characters)
 
