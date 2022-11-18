@@ -1,17 +1,23 @@
 
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
+import random
+
+
 app = FastAPI()
 class voetbalspeler(BaseModel):
-    voornaam: str
-    achternaam: str
+    volledige_naam: int
+    achternaam: int
     ploeg: str
     nationaliteit: str
     positie: str
     leeftijd: int
 
 
-alle_voetballers = [ "Cristiano", "Messi", "Mbappe", "Hazard", "De Bruyne", "Neymar", "Reus"]
+alle_voetballers = [ "Cristiano"," " "Messi", " " "Ibrahimovic", " " "Hazard", " " "Neymar", " " "Reus"]
+alle_ploegen = [ "Manchester United," "Paris Saint German", "FC Barcelona","Borrusia Dortmund", "Real Madrid"]
+alle_nationaliteiten = ["Argentijns", "Portugees", "Zweeds", "Braziliaans","Duits", "Belgisch"]
+alle_posities = ["Doelman", "Verdediger", "Middenvelder", "Aanvaller"]
 
 #geeft meer info weer over ronaldo om deze later op te vragen
 voetballer_Ronaldo = {
@@ -33,10 +39,10 @@ voetballer_Messi = {
 }
 
 
-#ik wil eerst een lijst opvragen van alle mogelijke spelers
+#ik wil eerst een random voetballer opvragen
 @app.get("/voetballer")
 async def get_item():
-    return alle_voetballers
+    return random.alle_voetballers
 
 #nu wil ik een lijst opvragen met extra info over de speler "Ronaldo"
 @app.get("/voetballer/Ronaldo")
