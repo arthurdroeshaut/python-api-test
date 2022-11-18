@@ -6,10 +6,11 @@ import random
 
 app = FastAPI()
 class StarWars(BaseModel):
-    Character: str
-    lightsaber: str
+    Star_Wars_Character: str
+    Lightsaber_Color: str
     Birthplace: str | None = None
     Species: str
+    Rank : str | None = None
     
 Star_Wars_Characters = [ "Anakin Skywalker", "Darth Vader", "Chewbacca", "Han Solo", "Obi-Wan-Kenobi", "Leia Organa", "Ahsoka Tano", "R2D2"],
 Lightsaber_Colors = [ "Green," "Blue", "red","Purple", "White", "Yellow", "Black"],
