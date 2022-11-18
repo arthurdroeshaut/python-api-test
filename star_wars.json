@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "naam": "Luke Skywalker",
+        "soort": "jedi",
+        "Lightsaber_color": "Green",
+        "Master": "Yoda & Obi Wan Kenobi",
+        "birthplace": "Polis Massa",
+        "Rank": "Jedi-Master",
+        "companion": "R2D2"
+    },
+    {
+        "id": 2,
+        "naam": "Anakin Skywalker",
+        "soort": "jedi",
+        "Lightsaber_color": "blue",
+        "Master": "Qui gon yinn & Obi Wan Kenobi",
+        "birthplace": "Tattooine",
+        "Rank":"Jedi Knight",
+        "companion": "C3PO"
+    },
+    {
+        "id": 3,
+        "naam" : "yoda",
+        "soort":"jedi",
+        "Lightsaber_color":"Green",
+        "Master": "N'Kata Del Gormo",
+        "birthplace": null,
+        "Rank":"Grand Master",
+        "companion": null
+    }
+    {
+        "id": 4,
+        "naam": "darth sidious",
+        "soort": "sith",
+        "Lightsaber_color": "red",
+        "Master": "darth plagueis",
+        "birthplace": "Naboo",
+        "rank": "sith master",
+        "companion": null
+    }
+    {
+        "id": 5,
+        "naam": "chewbacca",
+        "soort": "wookie",
+        "Lightsaber_color": null,
+        "Master": null,
+        "birthplace": "Kashyyyk",
+        "rank": null,
+        "companion": "Han solo"
+    }
