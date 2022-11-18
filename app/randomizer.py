@@ -42,7 +42,7 @@ voetballer_Messi = {
 #ik wil eerst een random voetballer opvragen
 @app.get("/voetballer")
 async def get_item():
-    return random.alle_voetballers
+    return random.choice(alle_voetballers)
 
 #nu wil ik een lijst opvragen met extra info over de speler "Ronaldo"
 @app.get("/voetballer/Ronaldo")
