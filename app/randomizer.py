@@ -1,10 +1,27 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from random import randint
+from fastapi.middleware.cors import CORSMiddleware
 import random
 
 app = FastAPI()
 
+origins = [
+    "http://localhost",
+    "http://localhost:8080",
+    "https://localhost.tiangolo.com",
+    "http://127.0.0.1:5500",
+    "https://arthurdroeshaut.github.io"
+
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class StarWars(BaseModel):
     Star_Wars_Character: str
