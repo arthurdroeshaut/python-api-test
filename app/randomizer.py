@@ -9,11 +9,11 @@ app = FastAPI()
 
 class StarWars(BaseModel):
     Star_Wars_Character: str
-    Lightsaber_Color: str | None = None
-    Birthplace: str | None = None
+    Lightsaber_Color: str
+    Birthplace: str
     Species: str
-    Rank: str | None = None
-    Ship: str | None = None
+    Rank: str
+    Ship: str
 
 
 # lijsten voor op te vragen in de api
