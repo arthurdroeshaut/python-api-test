@@ -22,8 +22,8 @@ Star_Wars_Characters = ["Anakin Skywalker", "Darth Vader", "Chewbacca", "Han Sol
 Lightsaber_Colors = ["Green", "Blue", "red", "Purple", "White", "Yellow", "Black"]
 Birthplace = ["Coruscant", "Naboo", "Batuu", "Tattooine", "Kashyyyk", "Cato Neimoidia"]
 Species = ["Human", "Jawa", "Ewok", "Wookie", "Gungan", "Rodian", "Kaminoan"]
-Rank = ["Youngling", "Padawan", "Jedi Knight", "Jedi Master", "Sith Acolyte", "Sith Master", "Sith Lord",
-        "Dark Council", "Jedi Grand Master", ]
+Rank = ["Youngling", "Padawan", "Jedi Knight", "Jedi Master", "Sith Acolyte", "Sith Master", "Sith Lord", "Dark Council"
+        ,"Jedi Grand Master", ]
 Ship = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fighter", "X-Wing", "Starfighter"]
 
 
