@@ -8,7 +8,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
-    "http://localhost:8080",
+    "http://localhost:8000",
     "https://localhost.tiangolo.com",
     "http://127.0.0.1:5500",
     "https://arthurdroeshaut.github.io"
@@ -22,6 +22,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 class StarWars(BaseModel):
     Star_Wars_Character: str
