@@ -1,11 +1,10 @@
-<html lang="">
+<html>
 <head>
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
     <meta charset="UTF-8">
     <style>
 body {
-    padding-top: 60px;
-    background-image: C:\Users\arthu\Documents\StarWars.jpg;
+    background-image: url('StarWars.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -16,19 +15,18 @@ header {
 }
 
 #border{
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
     align-content: center;
     margin: auto;
     height: 700px;
-    width: 500px;
-    background-color: chocolate;
+    width: 200px;
+    background-color: lavender;
     border: dashed;
 }
 
 </style>
-    <title></title>
 </head>
 <body>
 <div id="border">
@@ -42,17 +40,17 @@ header {
 
 </script>
     <header>
-<h1>Star Wars</h1>
+<h1>May The Force Be With You</h1>
         </header>
-<h2>lijst van De mogelijke Star Wars personages</h2>
-<ul x-data="alpineInstance()" x-init="fetch('http://127.0.0.1:8000/StarWars/Characters')
+<h2></h2>
+<ul x-data="alpineInstance()" x-init="fetch('http://127.0.0.1:8000/StarWars/Characters/All')
   .then(response => response.json())
   .then(data => players = data)">
     <template x-for="ply in players" :key="index">
         <li x-text="ply.name"></li>
     </template>
 </ul>
- <h3>Klik hier voor een random karakter uit de lijst te krijgen!</h3>
+ <h3>klik op de knop om een random speler uit de lijst te tonen</h3>
 <div x-data="{
         responsedata: null,
         postname: null,
@@ -72,7 +70,7 @@ header {
         </div>
     </div>
 
-    <h2>creeër je eigen star wars karakter</h2>
+    <h2>creeër een nieuwe player</h2>
     <div>
 <div
     x-data="{
@@ -96,14 +94,14 @@ header {
     }"
 
 >
-    <input placeholder="Character_Name" type="text" x-model="postCharacter_Name">
-    <input placeholder="Lightsaber_Color" type="number" x-model="postLightsabe_Color">
-    <input placeholder="Rank" type="number" x-model="postRank">
+    <input placeholder="name" type="text" x-model="postname">
+    <input placeholder="mmr" type="number" x-model="postmmr">
+    <input placeholder="level" type="number" x-model="postlevel">
         <button x-on:click="createPost">create</button>
 
-    <p>given name: <strong x-text="responsedata.name"></strong></p>
-    <p>Lightsaber color that was given: <strong x-text="responsedata.mmr"></strong></p>
-    <p>Rank of the character: <strong x-text="responsedata.level"></strong></p>
+    <p>name that was inserted: <strong x-text="responsedata.name"></strong></p>
+    <p>mmr that was inserted: <strong x-text="responsedata.mmr"></strong></p>
+    <p>level that was inserted: <strong x-text="responsedata.level"></strong></p>
 </div>
         </div>
     </div>
