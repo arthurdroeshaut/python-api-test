@@ -83,7 +83,7 @@ async def get_item():
 
 
 @app.post("/StarWars/CreateYourOwn")
-async def create_character(starwars: StarWars):
+async def create_character(starwars: dict):
     Star_Wars_Characters.append(starwars.Star_Wars_Character)
     Species.append(starwars.Specie)
     Birthplaces.append(starwars.Birthplace)
