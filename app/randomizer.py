@@ -55,3 +55,8 @@ async def get_items():
 @app.get("/StarWars/Characters/Ship")
 async def get_items():
     return random.choice(Ships)
+
+
+@app.get("/StarWars/Characters/All")
+async def get_item():
+    return Star_Wars_Characters
