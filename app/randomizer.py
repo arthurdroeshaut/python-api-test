@@ -33,6 +33,6 @@ async def get_item():
     return random.choice(Star_Wars_Characters)
 
 
-@app.get("/StarWars/CreateRandom")
+@app.get("/StarWars/Characters/CreateRandom")
 async def get_items():
-    return random.choices(Star_Wars_Characters + Lightsaber_Colors + Birthplaces + Species + Ranks + Ships)
+    return random.choice(Star_Wars_Characters + Lightsaber_Colors + Birthplaces + Species + Ranks + Ships)
