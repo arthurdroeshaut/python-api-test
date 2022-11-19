@@ -15,11 +15,7 @@ class StarWars(BaseModel):
     Ship: str |None = None
     
 
-
 #lijsten voor op te vragen in de api
-
-
-
 Star_Wars_Characters = [ "Anakin Skywalker", "Darth Vader", "Chewbacca", "Han Solo", "Obi-Wan-Kenobi", "Leia Organa", "Ahsoka Tano", "R2D2"]
 Lightsaber_Colors = [ "Green", "Blue", "red","Purple", "White", "Yellow", "Black"]
 Birthplace = ["Coruscant", "Naboo", "Batuu", "Tattooine","Kashyyyk", "Cato Neimoidia"]
@@ -34,10 +30,9 @@ print(Species)
 print(Rank)
 print(Ship)
 
+
 #ik wil eerst een random star wars karakter opvragen als "eerste get request"
-
-
-@app.get("/starwars/characters")
+@app.get("/StarWars/Characters")
 async def get_item():
     return random.choice[Star_Wars_Characters]
 
