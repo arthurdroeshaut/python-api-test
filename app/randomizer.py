@@ -34,8 +34,9 @@ class StarWars(BaseModel):
 
 
 # lijsten voor op te vragen in de api
-Star_Wars_Characters = ["Anakin Skywalker", "Darth Vader", "Chewbacca", "Han Solo", "Obi-Wan-Kenobi", "Leia Organa",
-                        "Ahsoka Tano", "R2D2"]
+Star_Wars_Characters = ["123", "321"]
+    #["Anakin Skywalker", "Darth Vader", "Chewbacca", "Han Solo", "Obi-Wan-Kenobi", "Leia Organa",
+                       # "Ahsoka Tano", "R2D2"]
 Lightsaber_Colors = ["Green", "Blue", "red", "Purple", "White", "Yellow", "Black"]
 Birthplaces = ["Coruscant", "Naboo", "Batuu", "Tattooine", "Kashyyyk", "Cato Neimoidia", "unknown"]
 Species = ["Human", "Jawa", "Ewok", "Wookie", "Gungan", "Rodian", "Kaminoan"]
