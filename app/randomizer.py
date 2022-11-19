@@ -31,21 +31,26 @@ Ships = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fig
 async def get_item():
     return random.choice(Star_Wars_Characters)
 
+
 @app.get("/StarWars/Characters/LightSaber")
 async def get_items():
     return random.choice(Lightsaber_Colors)
+
 
 @app.get("/StarWars/Characters/Birthplace")
 async def get_items():
     return random.choice(Birthplaces)
 
-@app.get("/StarWars/Characters/specie")
+
+@app.get("/StarWars/Characters/species")
 async def get_items():
     return random.choice(Species)
+
 
 @app.get("/StarWars/Characters/Rank")
 async def get_items():
     return random.choice(Ranks)
+
 
 @app.get("/StarWars/Characters/Ship")
 async def get_items():
