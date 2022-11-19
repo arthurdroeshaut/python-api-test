@@ -11,7 +11,7 @@ class StarWars(BaseModel):
     Star_Wars_Character: str
     Lightsaber_Color: str
     Birthplace: str
-    Species: str
+    Specie: str
     Rank: str
     Ship: str
 
@@ -20,11 +20,11 @@ class StarWars(BaseModel):
 Star_Wars_Characters = ["Anakin Skywalker", "Darth Vader", "Chewbacca", "Han Solo", "Obi-Wan-Kenobi", "Leia Organa",
                         "Ahsoka Tano", "R2D2"]
 Lightsaber_Colors = ["Green", "Blue", "red", "Purple", "White", "Yellow", "Black"]
-Birthplace = ["Coruscant", "Naboo", "Batuu", "Tattooine", "Kashyyyk", "Cato Neimoidia"]
+Birthplaces = ["Coruscant", "Naboo", "Batuu", "Tattooine", "Kashyyyk", "Cato Neimoidia"]
 Species = ["Human", "Jawa", "Ewok", "Wookie", "Gungan", "Rodian", "Kaminoan"]
-Rank = ["Youngling", "Padawan", "Jedi Knight", "Jedi Master", "Sith Acolyte", "Sith Master", "Sith Lord", "Dark Council"
+Ranks = ["Youngling", "Padawan", "Jedi Knight", "Jedi Master", "Sith Acolyte", "Sith Master", "Sith Lord", "Dark Council"
         ,"Jedi Grand Master", ]
-Ship = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fighter", "X-Wing", "Starfighter"]
+Ships = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fighter", "X-Wing", "Starfighter"]
 
 
 # print(Star_Wars_Characters)
