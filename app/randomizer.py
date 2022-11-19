@@ -38,7 +38,7 @@ Ship = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE figh
 # ik wil eerst een random star wars karakter opvragen als "eerste get request"
 @app.get("/StarWars/Characters")
 async def get_item():
-    return random.choice[Star_Wars_Characters]
+    return random.choice(Star_Wars_Characters)
 
 
 
