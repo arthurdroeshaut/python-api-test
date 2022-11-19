@@ -25,6 +25,10 @@ app.add_middleware(
 
 
 class StarWars(BaseModel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(args, kwargs)
+        self.Species = None
+
     Star_Wars_Character: str
     Lightsaber_Color: str or None = None
     Birthplace: str
@@ -85,7 +89,7 @@ async def get_item():
 @app.post("/StarWars/CreateYourOwn")
 async def create_character(starwars: StarWars):
     Star_Wars_Characters.append(starwars.Star_Wars_Character)
-    Species.append(starwars.Specie)
+    Species.append(starwars.Species)
     Birthplaces.append(starwars.Birthplace)
     if starwars.Lightsaber_Color:
         Lightsaber_Colors.append(starwars.Lightsaber_Color)
