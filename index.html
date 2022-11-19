@@ -20,9 +20,9 @@ header {
     padding-bottom: 15px;
     align-content: center;
     margin: auto;
-    height: 700px;
-    width: 200px;
-    background-color: lavender;
+    height: 650px;
+    width: 400px;
+    background-color: darkred;
     border: dashed;
 }
 
@@ -41,6 +41,7 @@ header {
 </script>
     <header>
 <h1>May The Force Be With You</h1>
+<h2> Star Wars API </h2>
         </header>
 <h2></h2>
 <ul x-data="alpineInstance()" x-init="fetch('http://127.0.0.1:8000/StarWars/Characters/All')
@@ -50,27 +51,26 @@ header {
         <li x-text="ply.name"></li>
     </template>
 </ul>
- <h3>klik op de knop om een random speler uit de lijst te tonen</h3>
+ <h3>the button below gives a random character.</h3>
 <div x-data="{
-        responsedata: null,
-        postname: null,
-        postmmr: null,
-        postlevel: null,
-        async getData() {
-            this.responsedata = await (await fetch('http://127.0.0.1:8000/players/random')).json();
+        name:
+            this.responsedata = await (await fetch('http://127.0.0.1:8000/StarWars/Characters')).json();
         },
     }">
     <div>
         <button x-on:click="getData">Send get request</button>
     <dl>
-        <dt>name:</dt> <strong x-text="responsedata.name">Placeholder</strong>
-        <dt>mmr:</dt><strong x-text="responsedata.mmr">Placeholder</strong>
-        <dt>level:</dt><strong x-text="responsedata.level">Placeholder</strong>
+        <dt>CharacterName:</dt> <strong x-text="responsedata.name">Placeholder</strong>
+        <dt>LightSaberColor:</dt><strong x-text="responsedata.LightSaberColor">Placeholder</strong>
+        <dt>Birthplace:</dt><strong x-text="responsedata.Birthplace">Placeholder</strong>
+        <dt>Species:</dt><strong x-text="responsedata.Species">Placeholder</strong>
+        <dt>Rank:</dt><strong x-text="responsedata.Rank">Placeholder</strong>
+        <dt>Ship</dt><strong x-text="responsedata.Ship">Placeholder</strong>
         </dl>
         </div>
     </div>
 
-    <h2>creeër een nieuwe player</h2>
+    <h2>create your own character</h2>
     <div>
 <div
     x-data="{
@@ -82,9 +82,9 @@ header {
             this.responsedata = await (await fetch('http://127.0.0.1:8000/players/create', {
               method: 'POST',
               body: JSON.stringify({
-                    name: this.postname,
-                    mmr: this.postmmr,
-                    level: this.postlevel
+                    name: this.PostName,
+                    LightSaberColor: this.postLightSaberColor,
+                    Rank: this.postRank
               }),
               headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -94,14 +94,17 @@ header {
     }"
 
 >
-    <input placeholder="name" type="text" x-model="postname">
-    <input placeholder="mmr" type="number" x-model="postmmr">
-    <input placeholder="level" type="number" x-model="postlevel">
+    <input placeholder="name" type="text" x-model="PostName">
+    <input placeholder="LightSaberColor" type="text" x-model="PostLightSaberColor">
+    <input placeholder="Birthplace" type="text" x-model="PostBirthplace">
+    <input placeholder="Species" type="text" x-model="PostSpecies">
+    <input placeholder="Rank" type="text" x-model="PostRank">
+    <input placeholder="Ship" type="text" x-model="PostShip">
         <button x-on:click="createPost">create</button>
 
-    <p>name that was inserted: <strong x-text="responsedata.name"></strong></p>
-    <p>mmr that was inserted: <strong x-text="responsedata.mmr"></strong></p>
-    <p>level that was inserted: <strong x-text="responsedata.level"></strong></p>
+    <p>The name of the Character that was chosen: <strong x-text="responsedata.name"></strong></p>
+    <p>LightSaberColor that was chosen: <strong x-text="responsedata.mmr"></strong></p>
+    <p>Rank that was given to the character: <strong x-text="responsedata.level"></strong></p>
 </div>
         </div>
     </div>
