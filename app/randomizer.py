@@ -28,7 +28,7 @@ class StarWars(BaseModel):
     star_wars_character: str
     lightsaber_color: str or None = None
     birthplace: str
-    specie: str
+    species: str
     rank: str or None = None
     ship: str or None = None
 
@@ -84,7 +84,7 @@ async def get_item():
 
 @app.post("/StarWars/CreateYourOwn")
 async def create_character(starwars: StarWars):
-    star_wars_characters.append(StarWars.star_wars_character)
+    star_wars_characters.append(starwars.star_wars_character)
     species.append(starwars.species)
     birthplaces.append(starwars.birthplace)
     if starwars.lightsaber_color:
