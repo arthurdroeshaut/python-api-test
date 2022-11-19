@@ -1,114 +1,16 @@
 <html>
 <head>
     <script defer src="https://unpkg.com/alpinejs@3.5.0/dist/cdn.min.js"></script>
-    <meta charset="UTF-8">
-    <style>
-body {
-    background-image: url('StarWars.jpg');
-    background-size: cover;
-    background-position: center;
-}
-header {
-    border-bottom: black solid;
-    text-align: center;
-
-}
-
-#border{
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 15px;
-    align-content: center;
-    margin: auto;
-    height: 650px;
-    width: 400px;
-    background-color: darkred;
-    border: dashed;
-}
-
-</style>
 </head>
 <body>
-<div id="border">
-  <script>
-    function alpineInstance() {
-        return {
-            players: {}
-        }
-    }
-
-
-</script>
-    <header>
-<h1>May The Force Be With You</h1>
-<h2> Star Wars API </h2>
-        </header>
-<h2></h2>
-<ul x-data="alpineInstance()" x-init="fetch('http://127.0.0.1:8000/StarWars/Characters/All')
-  .then(response => response.json())
-  .then(data => players = data)">
-    <template x-for="ply in players" :key="index">
-        <li x-text="ply.name"></li>
-    </template>
-</ul>
- <h3>the button below gives a random character.</h3>
-<div x-data="{
-        name:
-            this.responsedata = await (await fetch('http://127.0.0.1:8000/StarWars/Characters')).json();
-        },
-    }">
-    <div>
-        <button x-on:click="getData">Send get request</button>
-    <dl>
-        <dt>CharacterName:</dt> <strong x-text="responsedata.name">Placeholder</strong>
-        <dt>LightSaberColor:</dt><strong x-text="responsedata.LightSaberColor">Placeholder</strong>
-        <dt>Birthplace:</dt><strong x-text="responsedata.Birthplace">Placeholder</strong>
-        <dt>Species:</dt><strong x-text="responsedata.Species">Placeholder</strong>
-        <dt>Rank:</dt><strong x-text="responsedata.Rank">Placeholder</strong>
-        <dt>Ship</dt><strong x-text="responsedata.Ship">Placeholder</strong>
-        </dl>
-        </div>
-    </div>
-
-    <h2>create your own character</h2>
-    <div>
-<div
-    x-data="{
+    <div x-data="{
         responsedata: null,
-        postname: null,
-        postmmr: null,
-        postlevel: null,
-        async createPost() {
-            this.responsedata = await (await fetch('http://127.0.0.1:8000/players/create', {
-              method: 'POST',
-              body: JSON.stringify({
-                    name: this.PostName,
-                    LightSaberColor: this.postLightSaberColor,
-                    Rank: this.postRank
-              }),
-              headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-              },
-            })).json();
-        },
-    }"
-
->
-    <input placeholder="name" type="text" x-model="PostName">
-    <input placeholder="LightSaberColor" type="text" x-model="PostLightSaberColor">
-    <input placeholder="Birthplace" type="text" x-model="PostBirthplace">
-    <input placeholder="Species" type="text" x-model="PostSpecies">
-    <input placeholder="Rank" type="text" x-model="PostRank">
-    <input placeholder="Ship" type="text" x-model="PostShip">
-        <button x-on:click="createPost">create</button>
-
-    <p>The name of the Character that was chosen: <strong x-text="responsedata.name"></strong></p>
-    <p>LightSaberColor that was chosen: <strong x-text="responsedata.mmr"></strong></p>
-    <p>Rank that was given to the character: <strong x-text="responsedata.level"></strong></p>
-</div>
-        </div>
+        async getData() {
+            this.responsedata = await (await fetch('https://randomizer-service-arthurdroeshaut.cloud.okteto.net/StarWars/Characters')).json();
+        }
+    }">
+        <button x-on:click="getData">Send get request</button>
+        Data returned: <strong x-text="responsedata[0]">Placeholder</strong>
     </div>
-
-
 </body>
 </html>
