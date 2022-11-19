@@ -31,12 +31,12 @@ Ships = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fig
 async def get_item():
     return random.choice(Star_Wars_Characters)
 
-
+# ik wil hierna een random LightSaber uit de lijst opvragen.
 @app.get("/StarWars/Characters/LightsaberColor")
 async def get_items():
     return random.choice(Lightsaber_Colors)
 
-
+# hierna een random geboorteplaats (dit is grotendeels om te zien of dit werkt
 @app.get("/StarWars/Characters/Birthplace")
 async def get_items():
     return random.choice(Birthplaces)
@@ -60,3 +60,17 @@ async def get_items():
 @app.get("/StarWars/Characters/All")
 async def get_item():
     return Star_Wars_Characters
+
+
+@app.post("/StarWars/CreateYourOwn")
+async def create_character(starwars: StarWars):
+    Star_Wars_Characters.append(starwars.Star_Wars_Character)
+    Species.append(starwars.Specie)
+    Birthplaces.append(starwars.Birthplace)
+    if starwars.Lightsaber_Color:
+        Lightsaber_Colors.append(starwars.Lightsaber_Color)
+    if starwars.Rank:
+        Ranks.append(starwars.Rank)
+    if starwars.Ship:
+        Ships.append(starwars.Ship)
+    return starwars
