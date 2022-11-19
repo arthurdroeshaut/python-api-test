@@ -25,10 +25,6 @@ app.add_middleware(
 
 
 class StarWars(BaseModel):
-    def __init__(__pydantic_self__, **data: Any):
-        super().__init__(data)
-        __pydantic_self__.species = None
-
     star_wars_character: str
     lightsaber_color: str or None = None
     birthplace: str
