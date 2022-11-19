@@ -25,10 +25,6 @@ app.add_middleware(
 
 
 class StarWars(BaseModel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(args, kwargs)
-        self.Species = None
-
     Star_Wars_Character: str
     Lightsaber_Color: str or None = None
     Birthplace: str
