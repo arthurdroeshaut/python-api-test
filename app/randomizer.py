@@ -25,72 +25,76 @@ app.add_middleware(
 
 
 class StarWars(BaseModel):
-    Star_Wars_Character: str
-    Lightsaber_Color: str or None = None
-    Birthplace: str
-    Specie: str
-    Rank: str or None = None
-    Ship: str or None = None
+    def __init__(__pydantic_self__, **data: Any):
+        super().__init__(data)
+        __pydantic_self__.species = None
+
+    star_wars_character: str
+    lightsaber_color: str or None = None
+    birthplace: str
+    specie: str
+    rank: str or None = None
+    ship: str or None = None
 
 
 # lijsten voor op te vragen in de api
-Star_Wars_Characters = ["Anakin Skywalker", "Darth Vader", "Chewbacca", "Han Solo", "Obi-Wan-Kenobi", "Leia Organa",
+star_wars_characters = ["Anakin Skywalker", "Darth Vader", "Chewbacca", "Han Solo", "Obi-Wan-Kenobi", "Leia Organa",
                         "Ahsoka Tano", "R2D2"]
-Lightsaber_Colors = ["Green", "Blue", "red", "Purple", "White", "Yellow", "Black"]
-Birthplaces = ["Coruscant", "Naboo", "Batuu", "Tattooine", "Kashyyyk", "Cato Neimoidia", "unknown"]
-Species = ["Human", "Jawa", "Ewok", "Wookie", "Gungan", "Rodian", "Kaminoan"]
-Ranks = ["Youngling", "Padawan", "Jedi Knight", "Jedi Master", "Sith Acolyte", "Sith Master", "Sith Lord",
+lightsaber_colors = ["Green", "Blue", "red", "Purple", "White", "Yellow", "Black"]
+birthplaces = ["Coruscant", "Naboo", "Batuu", "Tattooine", "Kashyyyk", "Cato Neimoidia", "unknown"]
+species = ["Human", "Jawa", "Ewok", "Wookie", "Gungan", "Rodian", "Kaminoan"]
+ranks = ["Youngling", "Padawan", "Jedi Knight", "Jedi Master", "Sith Acolyte", "Sith Master", "Sith Lord",
          "Dark Council", "Jedi Grand Master"]
-Ships = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fighter", "X-Wing", "Starfighter"]
+ships = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fighter", "X-Wing", "Starfighter"]
 
 
 # ik wil eerst een random star wars karakter opvragen als "eerste get request"
 @app.get("/StarWars/Characters")
 async def get_item():
-    return random.choice(Star_Wars_Characters)
+    return random.choice(star_wars_characters)
 
 
 # ik wil hierna een random LightSaber uit de lijst opvragen.
 @app.get("/StarWars/Characters/LightsaberColor")
 async def get_items():
-    return random.choice(Lightsaber_Colors)
+    return random.choice(lightsaber_colors)
 
 
 # hierna een random geboorteplaats (dit is grotendeels om te zien of dit werkt
 @app.get("/StarWars/Characters/Birthplace")
 async def get_items():
-    return random.choice(Birthplaces)
+    return random.choice(birthplaces)
 
 
 @app.get("/StarWars/Characters/Species")
 async def get_items():
-    return random.choice(Species)
+    return random.choice(species)
 
 
 @app.get("/StarWars/Characters/Rank")
 async def get_items():
-    return random.choice(Ranks)
+    return random.choice(ranks)
 
 
 @app.get("/StarWars/Characters/Ship")
 async def get_items():
-    return random.choice(Ships)
+    return random.choice(ships)
 
 
 @app.get("/StarWars/Characters/All")
 async def get_item():
-    return Star_Wars_Characters
+    return star_wars_characters
 
 
 @app.post("/StarWars/CreateYourOwn")
 async def create_character(starwars: StarWars):
-    Star_Wars_Characters.append(starwars.Star_Wars_Character)
-    Species.append(starwars.Species)
-    Birthplaces.append(starwars.Birthplace)
-    if starwars.Lightsaber_Color:
-        Lightsaber_Colors.append(starwars.Lightsaber_Color)
-    if starwars.Rank:
-        Ranks.append(starwars.Rank)
-    if starwars.Ship:
-        Ships.append(starwars.Ship)
+    star_wars_characters.append(StarWars.star_wars_character)
+    species.append(starwars.species)
+    birthplaces.append(starwars.birthplace)
+    if starwars.lightsaber_color:
+        lightsaber_colors.append(starwars.lightsaber_color)
+    if starwars.rank:
+        ranks.append(starwars.rank)
+    if starwars.ship:
+        ships.append(starwars.ship)
     return starwars
