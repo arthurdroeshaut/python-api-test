@@ -1,6 +1,6 @@
 version: "3.9"
 services:
- randomizer-service:
+ StarWars_Randomizer-service:
   image: r0750378/python-api-test
   ports:
     - "8000:8000"
