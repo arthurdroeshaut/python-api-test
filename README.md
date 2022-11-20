@@ -110,6 +110,20 @@ ik kan wel aanraden om de website op 75-80% grootte te zetten
 
 ![image](https://user-images.githubusercontent.com/61418112/202925419-129e542e-9a1d-40e8-897e-53204beda313.png)
 
+zoals je kan zien zijn hier meerdere get-endpoints op te zien alsook een post endpoint.
 
 en deze code kan je vinden in het frontend gedeelde op deze link: https://github.com/arthurdroeshaut/API-Frontend (2e keer dat deze link erin staat)
+hierdoor geraak je op de frontend en deze is ook al gedeployed, je kan hier op je frontend al meerdere get requests zien alsook een werkende post request.
+
+ik zal ook even de frontend demonstreren:
+
+![image](https://user-images.githubusercontent.com/61418112/202928026-3612185e-8c9a-4929-9526-df1cd40fb339.png)
+
+hier heb ik dus een character aangemaakt met naam,... en zoals je eronder kan zien wordt dit dan uitgelezen, nu moest ik mijn get requests ook nog enkele kerel opnieuw proberen kan ik ook dit pas aangemaakte Character terugvonden zoals in volgende foto:
+
+![image](https://user-images.githubusercontent.com/61418112/202928126-20ac6351-affc-4bbe-8b7d-01976b728baa.png)
+
+let wel op, als u dit binnenkort probeert om eerst zelf een character aan te maken vooraleer u deze probeert te zoeken, het is niet gelinkt aan een database enkel in de okteto cloud. met bijgevolg dat als ik deze stopzet de extra toegevoegde gegevens ook verdwijnen.
+
+
 
