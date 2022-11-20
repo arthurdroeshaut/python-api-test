@@ -115,12 +115,12 @@ async def create_character(starwars: StarWars):
 
 # mijn tweede get request, dit is ook meteen de query parameter.
 
-@app.get("StarWars/Characters/info/{name}", response_model=list)
-async def get_star_wars_characters(name: str):
-    for star_wars_character in star_wars_characters:
-        if get_star_wars_characters("name") == "Luke Skywalker":
-            return Character_Luke
-        elif get_star_wars_characters("name") == "Darth Vader":
-            return Character_Vader
+@app.get("StarWars/Characters/jedi or sith/{color}")
+async def get_lightsaber_color(color: str):
+    for lightsaber_color in lightsaber_colors:
+        if lightsaber_color == ["Blue", "Green", "Yellow", "Purple", "White"]:
+            return "Character is part of the Jedi"
+        else:
+            return "Character is part of the sith"
 
 
