@@ -4,7 +4,6 @@ from random import randint
 from fastapi.middleware.cors import CORSMiddleware
 import random
 
-from sqlalchemy.testing import db
 
 app = FastAPI()
 
@@ -44,6 +43,23 @@ species = ["Human", "Jawa", "Ewok", "Wookie", "Gungan", "Rodian", "Kaminoan"]
 ranks = ["Youngling", "Padawan", "Jedi Knight", "Jedi Master", "Sith Acolyte", "Sith Master", "Sith Lord",
          "Dark Council", "Jedi Grand Master"]
 ships = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fighter", "X-Wing", "Starfighter"]
+
+Character_Luke = {
+            "id": 1,
+            "Star_Wars_Character": "Luke Skywalker",
+            "Lightsaber_color": "Green",
+            "Species": "Human",
+            "Rank": "Jedi Knight",
+            "Ship": "X-Wing",
+      },
+Character_Vader = {
+            "id": 2,
+            "Star_Wars_Character": "Darth Vader",
+            "Lightsaber_color": "Red",
+            "Species": "Human",
+            "Rank": "Jedi-Master",
+            "Ship": "Death Star",
+      },
 
 
 # ik wil eerst een random StarWars Character opvragen als "eerste get request"
@@ -98,10 +114,10 @@ async def create_character(starwars: StarWars):
 
 
 # mijn tweede get request, dit is ook meteen de query parameter.
-@app.get("StarWars/Characters/Rank/Query")
-async def read_items(q: str = Query(min_length=3)):
-    results = {"rank": [{"rank": "Foo"}, {"item_id": "Bar"}]}
-    if q:
-        results.update({"q": q})
-    return results
+
+@app.get("StarWars/Characters/{name}", response_model=list)
+async def get_star_wars_characters(name: str):
+    for star_wars_character in star_wars_characters:
+        if get_star_wars_characters("name") == star_wars_characters:
+            return star_wars_character
 
