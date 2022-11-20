@@ -118,6 +118,9 @@ async def create_character(starwars: StarWars):
 @app.get("StarWars/Characters/{name}", response_model=list)
 async def get_star_wars_characters(name: str):
     for star_wars_character in star_wars_characters:
-        if get_star_wars_characters("name") == star_wars_characters:
-            return star_wars_character
+        if get_star_wars_characters("name") == "Anakin Skywalker":
+            return Character_Luke
+        elif get_star_wars_characters("name") == "Darth Vader":
+            return Character_Vader
+
 
