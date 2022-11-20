@@ -1,8 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from pydantic import BaseModel
 from random import randint
 from fastapi.middleware.cors import CORSMiddleware
 import random
+
+from sqlalchemy.testing import db
 
 app = FastAPI()
 
@@ -44,44 +46,43 @@ ranks = ["Youngling", "Padawan", "Jedi Knight", "Jedi Master", "Sith Acolyte", "
 ships = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fighter", "X-Wing", "Starfighter"]
 
 
-# ik wil eerst een random star wars karakter opvragen als "eerste get request"
+# ik wil eerst een random StarWars Character opvragen als "eerste get request"
 @app.get("/StarWars/Characters")
 async def get_item():
     return random.choice(star_wars_characters)
 
 
-# ik wil hierna een random LightSaber uit de lijst opvragen.
+# ik wil hierna een random LightSaberColor uit de lijst opvragen. "als 2e get request)
 @app.get("/StarWars/Characters/LightsaberColor")
 async def get_items():
     return random.choice(lightsaber_colors)
 
 
-# hierna een random geboorteplaats (dit is grotendeels om te zien of dit werkt
+# hierna een random Birthplace (dit is grotendeels om te zien of dit werkt) en voor in de website
 @app.get("/StarWars/Characters/Birthplace")
 async def get_items():
     return random.choice(birthplaces)
 
 
+# hierna een random Species (dit is grotendeels om te zien of dit werkt) en voor in de website
 @app.get("/StarWars/Characters/Species")
 async def get_items():
     return random.choice(species)
 
 
+# hierna een random Rank (dit is grotendeels om te zien of dit werkt) en voor in de website
 @app.get("/StarWars/Characters/Rank")
 async def get_items():
     return random.choice(ranks)
 
 
+# hierna een random Ship (dit is grotendeels om te zien of dit werkt) en voor in de website
 @app.get("/StarWars/Characters/Ship")
 async def get_items():
     return random.choice(ships)
 
 
-@app.get("/StarWars/Characters/All")
-async def get_item():
-    return star_wars_characters
-
-
+# dit is mijn post, hiermee kun je zelf gegevens ingeven per categorie en worden deze weergegeven op de website.
 @app.post("/StarWars/CreateYourOwn")
 async def create_character(starwars: StarWars):
     star_wars_characters.append(starwars.star_wars_character)
@@ -94,3 +95,25 @@ async def create_character(starwars: StarWars):
     if starwars.ship:
         ships.append(starwars.ship)
     return starwars
+
+
+# mijn tweede get request, dit is ook meteen de query parameter.
+@app.get("/StarWars/Characters/Rank/Query", response_model=list)
+async def get_random_rank(amount: int = Query(default=1, gt=0)):
+    # een tijdelijke copy van de Ranks, zodat we geen duplicates krijgen
+    temp = db.get_all_ranks().copy()
+    selected = []
+    # Als het getal dat meegegeven wordt groter is of gelijk is aan de lengte van de lijst dan worden alle ranks
+    # getoont.
+    if amount >= len(db.get_all_ranks()):
+        return db.get_all_ranks()
+    else:
+        for i in range(amount):
+            # variabelen voor een random getal tussen 0 en de lengte van de lijst.
+            rand = random.randint(0, len(temp) - 1)
+            rand_rank = temp[rand]
+            # Voegen de geselecteerde random ranks aan de lijst
+            selected.append(rand_rank)
+            # We verwijderen de geselecteerde random rank zodat we geen duplicates krijgen
+            temp.remove(rand_rank)
+    return selected
