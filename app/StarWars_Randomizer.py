@@ -44,22 +44,7 @@ ranks = ["Youngling", "Padawan", "Jedi Knight", "Jedi Master", "Sith Acolyte", "
          "Dark Council", "Jedi Grand Master"]
 ships = ["Millenium Falcon", "Death Star", "Star Destroyer", "Slave 1", "TIE fighter", "X-Wing", "Starfighter"]
 
-Character_Luke = {
-            "id": 1,
-            "Star_Wars_Character": "Luke Skywalker",
-            "Lightsaber_color": "Green",
-            "Species": "Human",
-            "Rank": "Jedi Knight",
-            "Ship": "X-Wing",
-      },
-Character_Vader = {
-            "id": 2,
-            "Star_Wars_Character": "Darth Vader",
-            "Lightsaber_color": "Red",
-            "Species": "Human",
-            "Rank": "Jedi-Master",
-            "Ship": "Death Star",
-      },
+
 
 
 # ik wil eerst een random StarWars Character opvragen als "eerste get request"
