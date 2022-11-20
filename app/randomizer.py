@@ -98,22 +98,10 @@ async def create_character(starwars: StarWars):
 
 
 # mijn tweede get request, dit is ook meteen de query parameter.
-@app.get("/StarWars/Characters/Rank/Query", response_model=list)
-async def get_random_rank(amount: int = Query(default=1, gt=0)):
-    # een tijdelijke copy van de Ranks, zodat we geen duplicates krijgen
-    temp = db.get_all_ranks().copy()
-    selected = []
-    # Als het getal dat meegegeven wordt groter is of gelijk is aan de lengte van de lijst dan worden alle ranks
-    # getoont.
-    if amount >= len(db.get_all_ranks()):
-        return db.get_all_ranks()
-    else:
-        for i in range(amount):
-            # variabelen voor een random getal tussen 0 en de lengte van de lijst.
-            rand = random.randint(0, len(temp) - 1)
-            rand_rank = temp[rand]
-            # Voegen de geselecteerde random ranks aan de lijst
-            selected.append(rand_rank)
-            # We verwijderen de geselecteerde random rank zodat we geen duplicates krijgen
-            temp.remove(rand_rank)
-    return selected
+@app.get("StarWars/Characters/Rank/Query")
+async def read_items(q: str = Query(min_length=3)):
+    results = {"rank": [{"rank": "Foo"}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+
